@@ -1,5 +1,6 @@
 package com.www;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -46,7 +47,27 @@ public class Test01 {
 
         System.out.println("----------------");
         //获得指定的方法
-        System.out.println(cl.getDeclaredMethod("getName"));
+        System.out.println(cl.getDeclaredMethod("getName", null));
+        System.out.println(cl.getDeclaredMethod("setName", String.class));
+        System.out.println(cl.getDeclaredMethod("getId"));
+        System.out.println(cl.getDeclaredMethod("setId", int.class));
+
+
+        System.out.println("======================");
+        //获得所有的构造器
+        Constructor[] constructors = cl.getConstructors();//getConstructors是获得本类及其父类的全部的public方法
+        for (Constructor constructor : constructors) {
+            System.out.println(constructor);
+        }
+        Constructor[] declaredConstructors = cl.getDeclaredConstructors();//getDeclaredConstructors是获得本类的所有方法
+        for (Constructor declaredConstructor : declaredConstructors) {
+            System.out.println(declaredConstructor);
+        }
+        System.out.println("---=-=-=-=-=-=-=-=-=----");
+        //获得指定的构造器
+        System.out.println(cl.getConstructor());
+
+        System.out.println(cl.getConstructor(int.class, String.class, String.class));
 
     }
 
