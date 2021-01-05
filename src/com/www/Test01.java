@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  * java映射的测试
  */
 public class Test01 {
-    public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException, NoSuchMethodException {
         Class cl = Class.forName("com.www.User");
         //获得类的名字
         System.out.println(cl.getName());
@@ -43,6 +43,11 @@ public class Test01 {
         for (Method declaredMethod : declaredMethods) {
             System.out.println(declaredMethod);
         }
+
+        System.out.println("----------------");
+        //获得指定的方法
+        System.out.println(cl.getDeclaredMethod("getName"));
+
     }
 
 }
